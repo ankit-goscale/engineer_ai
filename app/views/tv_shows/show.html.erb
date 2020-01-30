@@ -7,9 +7,9 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @tv_show.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:start_time) %>:</strong></dt>
-  <dd><%= @tv_show.start_time %></dd>
+  <dd><%= @tv_show.start_time.strftime("%I:%M%p") %></dd>
   <dt><strong><%= model_class.human_attribute_name(:end_time) %>:</strong></dt>
-  <dd><%= @tv_show.end_time %></dd>
+  <dd><%= @tv_show.end_time.strftime("%I:%M%p") %></dd>
   <dt><strong><%= model_class.human_attribute_name(:tv_channel_id) %>:</strong></dt>
   <dd><%= @tv_show.tv_channel.name %></dd>
 </dl>

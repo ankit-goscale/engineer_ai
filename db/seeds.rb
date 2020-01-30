@@ -14,7 +14,7 @@
 
   show_names.each_with_index do |show_name, index|
     start_time = TvShow.last.present? ? TvShow.last.start_time + 1.hours : DateTime.now
-    end_time = TvShow.last.present? ? TvShow.last.end_time + 1.hours : DateTime.now + 1
+    end_time = TvShow.last.present? ? TvShow.last.end_time + 1.hours : DateTime.now + 1.hours
     channel_id = (index >= 3 ? (index/3) : 1)
     TvShow.create(name: show_name, start_time: start_time, end_time: end_time, tv_channel_id: channel_id )
   end
