@@ -1,0 +1,36 @@
+<%- model_class = TvShow -%>
+<% content_for :custom_javascript do %>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.dt_table').DataTable();
+} );
+</script>
+<% end %>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="dt_table table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:start_time) %></th>
+      <th><%= model_class.human_attribute_name(:end_time) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% tv_shows.each do |tv_show| %>
+      <tr>
+        <td><%= link_to tv_show.id, tv_show_path(tv_show) %></td>
+        <td><%= tv_show.name %></td>
+        <td><%= tv_show.start_time.strftime("%I:%M%p") %></td>
+        <td><%= tv_show.end_time.strftime("%I:%M%p")  %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      tv_show_path(tv_show), :class => 'btn btn-default btn-xs' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
